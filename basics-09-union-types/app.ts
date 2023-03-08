@@ -1,19 +1,14 @@
-const person: {
-  name: string;
-  age: number;
-  hobbies: string[];
-  role: [number, string];
-  // tuple 은 배열안에 타입과 크기를 지정하므로 배열과 용도를 달리 사용할 수 있습니다.
-} = {
-  name: "Hoon",
-  age: 30,
-  hobbies: ["Sports", "Cooking"],
-  role: [1, 2],
-};
+function combine(input1: number | string, input2: number | string) {
+  let result;
+  if (typeof input1 === "number" && typeof input2 === "number") {
+    result = input1 + input2;
+  } else {
+    result = input1.toString() + input2.toString();
+  }
+  return result;
+}
 
-person.role.push("admin");
-// push는 예외적으로 튜플에서 허용되어 타입스크립트가 오류를 잡아내지 못합니다.
-person.role[1] = 10;
-// 튜플에서 [1] 에 저장된 타입은 string 이여서 오류가 출력됩니다
-// 그렇지만 js으로 변환은 이루어집니다.
-person.role = [0, "admin"];
+const combinedAges = combine(30, 26);
+const combinedNames = combine("john", "max");
+// 서로 다른 두 종류의 값을 사용해야 하는 어플리케이션에서
+// 함수나 상수 혹은 변수의 매개 변수
