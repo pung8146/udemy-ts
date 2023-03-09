@@ -1,24 +1,18 @@
-function add(n1: number, n2: number) {
-  return n1 + n2;
+let userInput: unknown;
+let userName: string;
+// 어떤 사용자가 무엇을 입력할 수 없을지 모르기에 unknown 타입을 사용합니다
+userInput = 5;
+userInput = "hoon";
+if (typeof userInput === "string") {
+  userName = userInput;
+}
+// unknown type은 오류 발생합니다
+// any type은 오류가 발생하지 않습니다.
+// userInput 에서 사용될 타입을 알고있다면 유니온 타입을 쓰는게 유리합니다.
+
+function generateError(message: string, code: number) {
+  throw { message: message, errorCode: code };
 }
 
-function printResult(num: number): void {
-  console.log("Result: " + num);
-}
-
-function addAndHandle(n1: number, n2: number, cb: (num: number) => void) {
-  // 아무것도 반환하지 않지만 인수가 number 인 callback 함수 cb작성
-  const result = n1 + n2;
-  cb(result);
-}
-
-printResult(add(5, 12));
-
-addAndHandle(10, 20, (result) => {
-  // result 에 number를 표기 하지않는 이유는 TS가 스스로 추론하기때문에
-  // return 값을 넣어도 아무일이 생기지 않는 이유는 void로 아무일이 없다고 명시했기 때문입니다.
-  console.log(result);
-});
-
-// 함수가 undefined 를 비롯 아무것도 반환하지 않는다면 void를 써야됩니다.
-// TS 에서는 undefined 도 타입입니다.
+const result = generateError("An error occrurred", 500);
+console.log(result);
