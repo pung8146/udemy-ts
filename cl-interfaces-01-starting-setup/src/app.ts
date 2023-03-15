@@ -18,11 +18,17 @@ class Department {
     this.employees.push(employee)
   }
 
-  printEmployeeInformation()
-
-  console.log(this.employees.length)
-  console.log(this.employees)
+  printEmployeeInformation(){
+    console.log(this.employees.length)
+    console.log(this.employees)
+  }
 }
+
+class ITDepartment extends Department{
+    
+}
+
+const accounting = new ITDepartment('d1' , 'Accounting')
 
 accounting.addEmployee('Max');
 accounting.addEmployee('Manu');
