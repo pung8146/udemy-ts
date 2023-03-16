@@ -25,7 +25,20 @@ class Department {
 }
 
 class ITDepartment extends Department{
-    
+    constructor(id: string, admins: string[]) {
+      super(id, 'IT')
+      this.admins = admins
+    }
+}
+// private 속성은 정의된 클래스 내에서만 접근 가능하며 
+// 해당 클래스로부터 상속받는 클래스에서는 불가능하므로
+
+class AccountingDepartment extends Department {
+  private lastReport: string;
+
+  get mostRecentReport() {
+    return this.lastReport
+  }
 }
 
 const accounting = new ITDepartment('d1' , 'Accounting')
