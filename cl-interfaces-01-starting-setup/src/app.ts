@@ -1,14 +1,24 @@
-// 상속과 인터페이스도 구현 하는법
+
+인터페이스는 객체의 구조를 정의하지만
+함수의 구조를 정의 하는 데에도 사용됩니다. 
+인터페이스를 사용하여 함수를 생성할 수 있습니다.
+interface AddFn {
+    (a:number , b:number): number;
+}
+
+type AddFn = (a:number,b: number) => number;
+
+let add: AddFn;
+
+add = (n1: number, n2:number) => {
+    return n1 + n2
+}
+
 interface Named {
   readonly name: string;
-
-  // readonly 제어도 추가 가능
-  // public private는 추가 불가능
-  // 즉 class 에도 영향을 미치게 됩니다.
 }
 
 interface Greetable extends Named {
-  // , 이용해 확장 가능하며 class는 불가능 합니다.
   age: number;
   greet(phrase: string): void;
 }
